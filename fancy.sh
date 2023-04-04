@@ -30,7 +30,7 @@ function spinner {
     name="$1"
     shift
     start_spinner "$name"
-    if ! "$@"; then 
+    if ! "$@" &>/dev/null; then 
         stop_spinner "\e[91m\e[0m $name"
         exit 1
     else
