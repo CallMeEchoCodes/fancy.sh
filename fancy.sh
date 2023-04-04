@@ -27,7 +27,8 @@ function spinner {
     start_spinner "$2"
     cmdout="$1"
     if ! $cmdout; then 
-        stop_spinner "\\\e[91m\\\e[0m '$1'"
+        stop_spinner "\e[91m\e[0m $2"
+        exit 1
     fi
     stop_spinner "\e[92m\e[0m $2"
 }
