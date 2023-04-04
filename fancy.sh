@@ -34,6 +34,5 @@ function spinner {
         exit 1
     else
         stop_spinner "\e[92m\e[0m $2"
-        exit
     fi
 }
