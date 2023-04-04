@@ -3,7 +3,7 @@
 spinner_pid=
 
 function start_spinner {
-    trap "stop_spinner \\\e[91m\\\e[0m '$1'" EXIT
+    trap 'stop_spinner \\e[91m\\e[0m "$1"' SIGINT SIGTERM
     { 
         while : ; do for X in '\e[93m|\e[0m' '\e[93m/\e[0m' '\e[93m-\e[0m' '\e[93m\\\e[0m';
             do 
@@ -20,7 +20,7 @@ function stop_spinner {
     { kill -9 $spinner_pid && wait; } 2>/dev/null
     echo -en "\033[2K\r"
     echo -e "$1 $2"
-    trap - EXIT
+    trap - SIGINT SIGTERM
 }
 
 function spinner {
