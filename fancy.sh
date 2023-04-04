@@ -27,12 +27,13 @@ function stop_spinner {
 }
 
 function spinner {
-    start_spinner "$2"
-    cmdout="$1"
-    if ! $cmdout; then 
-        stop_spinner "\e[91m\e[0m $2"
+    name="$1"
+    shift
+    start_spinner "$name"
+    if ! "$@"; then 
+        stop_spinner "\e[91m\e[0m $name"
         exit 1
     else
-        stop_spinner "\e[92m\e[0m $2"
+        stop_spinner "\e[92m\e[0m $name"
     fi
 }
