@@ -1,5 +1,4 @@
 #!/bin/bash
-
 spinner_pid=
 
 function start_spinner {
@@ -25,7 +24,7 @@ function stop_spinner {
 
 function spinner {
     start_spinner "$2"
-    cmdout="$1"
+    cmdout="$1 &>/dev/null"
     if ! $cmdout; then 
         exit 1
     fi
